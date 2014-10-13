@@ -297,6 +297,9 @@ EOT
             }
             $selected[$package->getUniqueName()] = $package;
             $selectedPackageNames[$package->getName()] = true;
+            foreach ($package->getReplaces() as $replacesLink) {
+                $selectedPackageNames[$replacesLink->getTarget()] = true;
+            }
 
             if (!$requireAll) {
                 $required = array();
